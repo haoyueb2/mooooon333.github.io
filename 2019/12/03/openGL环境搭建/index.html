@@ -79,20 +79,24 @@
 
 
 
-<meta name="description" content="这个只是测试图片">
+<meta name="description" content="openGL跑了两个项目，涉及一些makefile和vs2017配置的问题">
 <meta name="keywords" content="图形学">
 <meta property="og:type" content="article">
 <meta property="og:title" content="openGL环境搭建">
 <meta property="og:url" content="https://mooooon333.github.io/2019/12/03/openGL环境搭建/index.html">
 <meta property="og:site_name" content="Bai&#39;s Blog">
-<meta property="og:description" content="这个只是测试图片">
+<meta property="og:description" content="openGL跑了两个项目，涉及一些makefile和vs2017配置的问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://mooooon333.github.io/.io//image/1575346954220.png">
-<meta property="og:updated_time" content="2019-12-03T04:29:45.722Z">
+<meta property="og:image" content="https://mooooon333.github.io/.io//1575357403079.png">
+<meta property="og:image" content="https://mooooon333.github.io/.io//1575359269602.png">
+<meta property="og:image" content="https://mooooon333.github.io/.io//1575359835499.png">
+<meta property="og:image" content="https://mooooon333.github.io/.io//1575361542015.png">
+<meta property="og:image" content="https://mooooon333.github.io/.io//照片/markdown/1575295693974.png">
+<meta property="og:updated_time" content="2019-12-03T08:31:52.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openGL环境搭建">
-<meta name="twitter:description" content="这个只是测试图片">
-<meta name="twitter:image" content="https://mooooon333.github.io/.io//image/1575346954220.png">
+<meta name="twitter:description" content="openGL跑了两个项目，涉及一些makefile和vs2017配置的问题">
+<meta name="twitter:image" content="https://mooooon333.github.io/.io//1575357403079.png">
 
 
 
@@ -264,7 +268,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-03T12:14:36+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-03T13:57:48+08:00">
                 2019-12-03
               </time>
             
@@ -302,8 +306,68 @@
       
 
       
-        <p>这个只是测试图片</p>
-<p><img src="/.io//image/1575346954220.png" alt="1575346954220"></p>
+        <p>openGL跑了两个项目，涉及一些makefile和vs2017配置的问题</p>
+<a id="more"></a>
+<h1 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h1><p>项目地址：<a href="https://github.com/raywan/render3d_01" target="_blank" rel="noopener">https://github.com/raywan/render3d_01</a></p>
+<p>配置SDL：<a href="https://blog.csdn.net/u013898716/article/details/77987312" target="_blank" rel="noopener">https://blog.csdn.net/u013898716/article/details/77987312</a></p>
+<p>配置rw：</p>
+<p><a href="https://github.com/raywan/rw" target="_blank" rel="noopener">https://github.com/raywan/rw</a>看什么single file，意思就是只用include那个文件夹就好。反正我就是在c/c++ 常规里边设置</p>
+<p>tiny_Obj_loader同上</p>
+<p>Task_schedulet同上</p>
+<p>最大的问题是</p>
+<p><img src="/.io//1575357403079.png" alt="1575357403079"></p>
+<p>一开始以为是工程项目找不到，新建了筛选器去搞。其实不是</p>
+<blockquote>
+<p>看菜单： 项目–&gt;显示所有文件<br>勾上，则在解决方案中按目录显示，右键菜单可以添加文件<br>不勾上，则在解决方案中按筛选器显示，右键菜单可以添加筛选器</p>
+</blockquote>
+<p>显示全部文件后，直接把assets包含在项目里就好，但是还是报错！</p>
+<p>主要原因是</p>
+<p><a href="https://stackoverflow.com/questions/49462889/stbi-load-doesnt-return-any-value" target="_blank" rel="noopener">https://stackoverflow.com/questions/49462889/stbi-load-doesnt-return-any-value</a></p>
+<blockquote>
+<p>I guess you have to use an absolute path because your stb_image.h is somewhere outside your project directory. This way, it will look for the relative path of your image from the directory the header is in. and not in your project directory.</p>
+<p>You have two options to fix this:</p>
+<ul>
+<li>Use absolute paths</li>
+<li>Move stb_image.h to your project directory, preferably at the root of it</li>
+</ul>
+</blockquote>
+<p>把头文件其他相关文件也要移动</p>
+<p>所以改为绝对路径</p>
+<p>然后这个，这两个文件统统不存在</p>
+<p><img src="/.io//1575359269602.png" alt="1575359269602"></p>
+<p>不过这个obj在不在工程里好像无关紧要</p>
+<p>现在可以画了但是是黑的！</p>
+<p>现在是shader</p>
+<p><img src="/.io//1575359835499.png" alt="1575359835499"></p>
+<p>shader的路劲也全要改，但这个不知道为什么，按道理头文件也在这里啊..搞不懂搞不懂</p>
+<p><img src="/.io//1575361542015.png" alt="1575361542015"></p>
+<p>改完就能运行了</p>
+<h1 id="一个linux的opengl项目"><a href="#一个linux的opengl项目" class="headerlink" title="一个linux的opengl项目"></a>一个linux的opengl项目</h1><p>项目地址：<a href="https://github.com/Deco/CG200Assignment" target="_blank" rel="noopener">https://github.com/Deco/CG200Assignment</a></p>
+<p><a href="https://www.wikihow.com/Install-Mesa-(OpenGL)-on-Linux-Mint" target="_blank" rel="noopener">https://www.wikihow.com/Install-Mesa-(OpenGL)-on-Linux-Mint</a>照着这个初步搭好了</p>
+<p>跑这个代码也可以跑<a href="http://www.codebind.com/linux-tutorials/install-opengl-ubuntu-linux/" target="_blank" rel="noopener">http://www.codebind.com/linux-tutorials/install-opengl-ubuntu-linux/</a></p>
+<p>更改一下顺序!!<img src="/.io//照片\markdown\1575295693974.png" alt="1575295693974"></p>
+<p>makefile教程</p>
+<p><a href="https://blog.csdn.net/liang13664759/article/details/1771246" target="_blank" rel="noopener">https://blog.csdn.net/liang13664759/article/details/1771246</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2015/02/make.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/02/make.html</a></p>
+<p>stackoverflow说顺序有关系！！</p>
+<p>好了好了！！</p>
+<p>下一步就是看</p>
+<p>就是用./cactusgame就能运行了</p>
+<h1 id="关于配环境"><a href="#关于配环境" class="headerlink" title="关于配环境"></a>关于配环境</h1><p>配置项目：</p>
+<blockquote>
+<p>作者：Johnny Wu</p>
+<p>链接：<a href="https://www.zhihu.com/question/24079888/answer/26610820" target="_blank" rel="noopener">https://www.zhihu.com/question/24079888/answer/26610820</a></p>
+<p>来源：知乎</p>
+<p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p>我觉得劝戒年轻人（或者我们视为初学者）不要用VS的程序员可能持有这些心态，我把它分为正面劝戒和负面劝诫：</p>
+<p><strong>正面：</strong></p>
+<ol>
+<li>希望你能够通过 makefile, premake, grunt, gulp 等 build 工具，一步一步地搭建工程环境从而对程序如何从繁多的文件中，build生成一份用户可用的模块或执行文件 有一个详细全面的认知。理解整个项目的生成原理，可以让你更好地和其他的程序员一起工作，更好地命名你的原程序文件以及规划你的文件所在路径。而且对于拿到手的项目，可以理解他在编译的每个时间段都做了什么事情。毕竟现在大型项目的build过程，不单单包括调用编译器，他或许还涉及到对源代码拷贝，连接合并，或者对源代码模板解析生成中间文件等管线操作。</li>
+<li>希望你多开阔眼界，看看程序世界中各种各样的工具的处理方案，也许能够从其他的工具中获得一些好的灵感，或者通过不同种类工具的学习来融会贯通。</li>
+<li>希望你不被VS而约束或绑死在一个操作系统平台上做开发。而通过对通用工具的熟悉，获得良好的开发素质，从而在未来的技术变化中更快更好地适应不同平台。</li>
+</ol>
+<p>对于初学者，如果一味地使用VS去操作编译的全过程，或许会失去了对build pipeline做一些编程控制的能力，而这部分能力将会在你lead一个团队做事情时有所优势，同时也让你们的项目规划更趋于自动化。所以，如果有程序员出于这样的初衷给予年轻人劝诫，我觉得他的出发点是不错的。</p>
+</blockquote>
 
       
     </div>
@@ -334,8 +398,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/03/网页设计大作业/" rel="next" title="网页设计大作业">
-                <i class="fa fa-chevron-left"></i> 网页设计大作业
+              <a href="/2019/12/03/hexo用法/" rel="next" title="hexo用法">
+                <i class="fa fa-chevron-left"></i> hexo用法
               </a>
             
           </div>
@@ -343,10 +407,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/03/hexo用法/" rel="prev" title="hexo用法">
-                hexo用法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -398,8 +458,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -418,7 +487,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -454,6 +523,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#windows"><span class="nav-number">1.</span> <span class="nav-text">windows</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个linux的opengl项目"><span class="nav-number">2.</span> <span class="nav-text">一个linux的opengl项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于配环境"><span class="nav-number">3.</span> <span class="nav-text">关于配环境</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
