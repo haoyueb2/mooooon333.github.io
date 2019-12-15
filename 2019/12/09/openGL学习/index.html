@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="图形学," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="Nothing">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Bai&#39;s Blog">
-<meta property="og:url" content="https://mooooon333.github.io/tags/前端/index.html">
+<meta name="description" content="ambient其实直接把光源颜色乘以小常量 其实这个diffuse就只考虑了光源和法向量的关系，没有其他，所以是漫反射 镜面光照specular才考虑了视角和反射向量的夹角 注意demo里光源的着色器是分开的 这个基础光照这节信息量比较大 加上材质只是在前边算基础光照每回乘的时候多乘一个材质对应信息的分量 最后ambient的强度，diffuse和specular强度也封装进光的结构体了。基础光照">
+<meta name="keywords" content="图形学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="openGL学习">
+<meta property="og:url" content="https://mooooon333.github.io/2019/12/09/openGL学习/index.html">
 <meta property="og:site_name" content="Bai&#39;s Blog">
-<meta property="og:description" content="Nothing">
+<meta property="og:description" content="ambient其实直接把光源颜色乘以小常量 其实这个diffuse就只考虑了光源和法向量的关系，没有其他，所以是漫反射 镜面光照specular才考虑了视角和反射向量的夹角 注意demo里光源的着色器是分开的 这个基础光照这节信息量比较大 加上材质只是在前边算基础光照每回乘的时候多乘一个材质对应信息的分量 最后ambient的强度，diffuse和specular强度也封装进光的结构体了。基础光照">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-15T02:23:04.683Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bai&#39;s Blog">
-<meta name="twitter:description" content="Nothing">
+<meta name="twitter:title" content="openGL学习">
+<meta name="twitter:description" content="ambient其实直接把光源颜色乘以小常量 其实这个diffuse就只考虑了光源和法向量的关系，没有其他，所以是漫反射 镜面光照specular才考虑了视角和反射向量的夹角 注意demo里光源的着色器是分开的 这个基础光照这节信息量比较大 加上材质只是在前边算基础光照每回乘的时候多乘一个材质对应信息的分量 最后ambient的强度，diffuse和specular强度也封装进光的结构体了。基础光照">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://mooooon333.github.io/tags/前端/"/>
+  <link rel="canonical" href="https://mooooon333.github.io/2019/12/09/openGL学习/"/>
 
 
 
 
 
-  <title>标签: 前端 | Bai's Blog</title>
+  <title>openGL学习 | Bai's Blog</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,54 +219,157 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>前端<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mooooon333.github.io/2019/12/09/openGL学习/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/_uploads/first.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bai's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/12/03/网页设计大作业/" itemprop="url">
-              
-                <span itemprop="name">网页设计大作业</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">openGL学习</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-12-03T12:14:36+08:00"
-              content="2018-12-03" >
-          12-03
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-09T22:54:43+08:00">
+                2019-12-09
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>ambient其实直接把光源颜色乘以小常量</p>
+<p>其实这个diffuse就只考虑了光源和法向量的关系，没有其他，所以是漫反射</p>
+<p>镜面光照specular才考虑了视角和反射向量的夹角</p>
+<p>注意demo里光源的着色器是分开的</p>
+<p>这个基础光照这节信息量比较大</p>
+<p>加上材质只是在前边算基础光照每回乘的时候多乘一个材质对应信息的分量</p>
+<p>最后ambient的强度，diffuse和specular强度也封装进光的结构体了。基础光照好像没设置diffuse 的</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图形学/" rel="tag"># 图形学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/06/python基础/" rel="next" title="python基础">
+                <i class="fa fa-chevron-left"></i> python基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/12/spring-boot学习/" rel="prev" title="spring boot学习">
+                spring boot学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -272,6 +377,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -481,6 +590,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

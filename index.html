@@ -232,6 +232,466 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mooooon333.github.io/2019/12/12/spring-boot学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/_uploads/first.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bai's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/12/spring-boot学习/" itemprop="url">spring boot学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-12T19:35:07+08:00">
+                2019-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>官网springboot<a href="https://spring.io/projects/spring-boot#learn" target="_blank" rel="noopener">https://spring.io/projects/spring-boot#learn</a></p>
+<p>什么是spring bean<a href="https://www.baeldung.com/spring-bean" target="_blank" rel="noopener">https://www.baeldung.com/spring-bean</a></p>
+<p>spring guide总览，其实基础还是在sping那<a href="https://spring.io/guides" target="_blank" rel="noopener">https://spring.io/guides</a>其实大部分还是在这里找，每个都有代码</p>
+<p>getting start的结语</p>
+<blockquote>
+<h2 id="5-What-to-Read-Next"><a href="#5-What-to-Read-Next" class="headerlink" title="5. What to Read Next"></a>5. What to Read Next</h2><p>Hopefully, this section provided some of the Spring Boot basics and got you on your way to writing your own applications. If you are a task-oriented type of developer, you might want to jump over to <a href="https://spring.io/" target="_blank" rel="noopener">spring.io</a> and check out some of the <a href="https://spring.io/guides/" target="_blank" rel="noopener">getting started</a> guides that solve specific “How do I do that with Spring?” problems. We also have Spring Boot-specific “<a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/howto.html#howto" target="_blank" rel="noopener">How-to</a>” reference documentation.</p>
+<p>Otherwise, the next logical step is to read <em>using-spring-boot.html</em>. If you are really impatient, you could also jump ahead and read about <em>Spring Boot features</em>.</p>
+</blockquote>
+<p>其实看这个Building an Application with Spring Boot<a href="https://spring.io/guides/gs/spring-boot/" target="_blank" rel="noopener">https://spring.io/guides/gs/spring-boot/</a>就了解差不多了（有代码，complete是完成版，initial是初始版）</p>
+<p>顶多再把那个rest service看一下就好了官网rest<a href="https://spring.io/guides/gs/rest-service/" target="_blank" rel="noopener">https://spring.io/guides/gs/rest-service/</a></p>
+<p>后边主要看怎么用连接数据库</p>
+<p>连接mysql<a href="https://spring.io/guides/gs/accessing-data-mysql/" target="_blank" rel="noopener">https://spring.io/guides/gs/accessing-data-mysql/</a>,也有代码可参考</p>
+<p>使用了spring data jpa。但这个意思好像表是用代码产生</p>
+<p>背景</p>
+<blockquote>
+<p>Hibernate是一个开放源代码的对象关系映射框架，它对<a href="https://baike.baidu.com/item/JDBC/485214" target="_blank" rel="noopener">JDBC</a>进行了非常轻量级的对象封装，它将POJO与数据库表建立映射关系，是一个全自动的orm框架，hibernate可以自动生成SQL语句，自动执行，使得Java程序员可以随心所欲的使用对象编程思维来操纵数据库。 Hibernate可以应用在任何使用JDBC的场合，既可以在Java的客户端程序使用</p>
+</blockquote>
+<p>ORM,spring官网对orm的介绍<a href="https://docs.spring.io/spring/docs/4.2.x/spring-framework-reference/html/orm.html" target="_blank" rel="noopener">https://docs.spring.io/spring/docs/4.2.x/spring-framework-reference/html/orm.html</a>没看完，有些冗长</p>
+<p><img src="http://img.blog.csdn.net/20170506100026207?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaG9uXzN5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>data access object (DAO) ,Java Persistence API (JPA)</p>
+<p>spring原理很经典的话：</p>
+<blockquote>
+<p>内部最核心的就是<strong>IOC</strong>了，动态注入，让一个对象的创建不用new了，可以自动的生产，这其实就是利用java里的反射，反射其实就是在运行时动态的去创建、调用对象，Spring就是在运行时，跟xml Spring的配置文件来动态的创建对象，和调用对象里的方法的 。<br> Spring还有一个核心就是<strong>AOP</strong>这个就是面向切面编程，可以为某一类对象 进行监督和控制（也就是 在调用这类对象的具体方法的前后去调用你指定的 模块）从而达到对一个模块扩充的功能。这些都是通过  配置类达到的。<br> <strong>Spring目的</strong>：就是让对象与对象（模块与模块）之间的关系没有通过代码来关联，都是通过配置类说明管理的（Spring根据这些配置 内部通过反射去动态的组装对象）<br> 要记住：Spring是一个容器，凡是在容器里的对象才会有Spring所提供的这些服务和功能。<br> Spring里用的最经典的一个设计模式就是：模板方法模式。(这里我都不介绍了，是一个很常用的设计模式)， Spring里的配置是很多的，很难都记住，但是Spring里的精华也无非就是以上的两点，把以上两点跟理解了 也就基本上掌握了Spring.</p>
+<p>链接：<a href="https://www.jianshu.com/p/c1498a0d7447" target="_blank" rel="noopener">https://www.jianshu.com/p/c1498a0d7447</a></p>
+</blockquote>
+<p>spring中文文档介绍orm和数据访问部分&lt;<a href="https://www.cntofu.com/book/95/16/16-1.md" target="_blank" rel="noopener">https://www.cntofu.com/book/95/16/16-1.md</a>&gt;</p>
+<p>spring data jpa中文文档<a href="https://www.cntofu.com/book/88/readme.html" target="_blank" rel="noopener">https://www.cntofu.com/book/88/readme.html</a></p>
+<p>这两个谷歌出来也都是排名靠前的，只是gitbook实在阅读体验不好</p>
+<p>跟着就开始做吧，看不出来啥</p>
+<p>今天先把数据库连上，写好findALL</p>
+<p>spring feature里边也有提到<a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/spring-boot-features.html#boot-features-jpa-and-spring-data" target="_blank" rel="noopener">https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/spring-boot-features.html#boot-features-jpa-and-spring-data</a></p>
+<p>how -to -guide里也有<a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/howto.html#howto-configure-a-datasource" target="_blank" rel="noopener">https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/howto.html#howto-configure-a-datasource</a></p>
+<p>mysql忘了怎么连数据库了mysql -h localhost -u root -p然后输入1234567</p>
+<p>推荐的代码结构</p>
+<p><img src="/.io//1576322687867.png" alt="1576322687867"></p>
+<p>@RestController是@controller加@Responsebody，就是可以返回json等而不是页面？</p>
+<p>参考了这篇<a href="http://zetcode.com/springboot/mysql/" target="_blank" rel="noopener">http://zetcode.com/springboot/mysql/</a>，这篇有分service架构</p>
+<p>报错说这条没必要spring.datasource.driver-class-name=com.mysql.jdbc.Driver</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; spring.jpa.hibernate.ddl-auto=update</span><br><span class="line">&gt; spring.datasource.url=jdbc:mysql://localhost:3306/sedb</span><br><span class="line">&gt; spring.datasource.username=springuser</span><br><span class="line">&gt; spring.datasource.password=ThePassword</span><br><span class="line">&gt; </span><br><span class="line">&gt; #spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQLDialect</span><br><span class="line">&gt; #spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect</span><br><span class="line">&gt; </span><br><span class="line">&gt; #spring.jackson.time-zone=GMT+8</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>在线转换</p>
+<p><a href="https://www.toyaml.com/index.html" target="_blank" rel="noopener">https://www.toyaml.com/index.html</a></p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&gt; server:</span><br><span class="line">&gt;   port: 7632</span><br><span class="line">&gt; </span><br><span class="line">&gt; spring:</span><br><span class="line">&gt;   application:</span><br><span class="line">&gt;     name: skill-provider</span><br><span class="line">&gt; </span><br><span class="line">&gt;   datasource:</span><br><span class="line">&gt;     url: jdbc:mysql://localhost:3306/sedb</span><br><span class="line">&gt;     username: springuser</span><br><span class="line">&gt;     password: ThePassword</span><br><span class="line">&gt;   jpa:</span><br><span class="line">&gt;     hibernate:</span><br><span class="line">&gt;       ddl-auto: update</span><br><span class="line">&gt; </span><br><span class="line">&gt; eureka:</span><br><span class="line">&gt;   client:</span><br><span class="line">&gt;     fetch-registry: true</span><br><span class="line">&gt;     register-with-eureka: true</span><br><span class="line">&gt;     service-url:</span><br><span class="line">&gt;       defaultZone: http://49.235.255.145:8761/eureka/</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>yml内容</p>
+<p>只要一本地就出错，用root是说时区和jdbc cannot ddl什么的，</p>
+<p>juechen调好时间也是真个问题，日了。远端的可以</p>
+<p>然后也加不了原来的那些配置，7632也是，日狗了</p>
+<p>fastjson看这里<a href="https://www.runoob.com/w3cnote/fastjson-intro.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/fastjson-intro.html</a></p>
+<p>fluentput其实就是put返回this，所以可以链式添加</p>
+<p>@Autowired自动生成单例</p>
+<p><a href="https://www.callicoder.com/spring-boot-rest-api-tutorial-with-mysql-jpa-hibernate/" target="_blank" rel="noopener">https://www.callicoder.com/spring-boot-rest-api-tutorial-with-mysql-jpa-hibernate/</a>这篇是基础的CRUD操作</p>
+<p><a href="https://medium.com/better-programming/building-a-spring-boot-rest-api-part-iii-integrating-mysql-database-and-jpa-81391404046a" target="_blank" rel="noopener">https://medium.com/better-programming/building-a-spring-boot-rest-api-part-iii-integrating-mysql-database-and-jpa-81391404046a</a>这篇介绍了blogController具体用那些方法，还有在Repo里边根据规范定义那些语句，但无需实现啊看着</p>
+<p><a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.details" target="_blank" rel="noopener">https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.details</a>官网介绍分页比中文多，还有@query定义，名字一些详细信息，查询的信息多多了。可以ctrl+F pageable</p>
+<p>感觉自定义名词用jpaRepository居多，方法也多。Because of the inheritance mentioned above, <code>JpaRepository</code> will have all the functions of <code>CrudRepository</code> and<code>PagingAndSortingRepository</code>。不知道基本的Repo可不可以匹配自定义的查询，感觉是可以的，反正用jpa吧</p>
+<p><a href="https://docs.spring.io/autorepo/docs/spring-data-jpa/current/api/org/springframework/data/jpa/repository/support/SimpleJpaRepository.html" target="_blank" rel="noopener">https://docs.spring.io/autorepo/docs/spring-data-jpa/current/api/org/springframework/data/jpa/repository/support/SimpleJpaRepository.html</a></p>
+<p>bean默认是单例的，autowired可以自动加getset方法？</p>
+<p>不知道为什么必须给service加注解才可以</p>
+<p>@跨域，@transaction还不清楚</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">│ Annotation │ Meaning                                             │</span><br><span class="line">├────────────┼─────────────────────────────────────────────────────┤</span><br><span class="line">│ <span class="meta">@Component</span> │ generic stereotype <span class="keyword">for</span> any Spring-managed component │</span><br><span class="line">│ <span class="meta">@Repository</span>│ stereotype <span class="keyword">for</span> persistence layer                    │</span><br><span class="line">│ <span class="meta">@Service</span>   │ stereotype <span class="keyword">for</span> service layer                        │</span><br><span class="line">│ <span class="meta">@Controller</span>│ <span class="function">stereotype <span class="keyword">for</span> presentation <span class="title">layer</span> <span class="params">(spring-mvc)</span>      │</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>The three annotations are used to separate <strong>“Layers”</strong> in your application,</p>
+<ul>
+<li>Controllers just do stuff like dispatching, forwarding, calling service methods etc.</li>
+<li>Service Hold business Logic, Calculations etc.</li>
+<li>Repository are the DAOs (Data Access Objects), they access the database directly.</li>
+</ul>
+</blockquote>
+<p>和mvc关系是啥？</p>
+<p>关于命名：//由于controller已分，所以名字上无需再分不同？直接/all就叫findAll？</p>
+<p>之前那篇分serice的blog在controller里区分是因为controller有一系列find吧。但是那篇把service接口命名加了I，感觉比我们这种好一点</p>
+<p><a href="https://blog.csdn.net/qq_42684642/article/details/83058211" target="_blank" rel="noopener">https://blog.csdn.net/qq_42684642/article/details/83058211</a>这里说modelAttribute使用application/json会有问题</p>
+<p>中文乱码问题也没有解决！</p>
+<p>post过去总会返回来值，不管是数据类型不对还是什么，那就返回skill咯？</p>
+<p>delete一定要我返回Optional<skill>，可空的东西</skill></p>
+<p>但是返回的封装没决定用啥， <em>简单粗暴的讲 @ResponseBody可以直接返回Json结果， @ResponseEntity不仅可以返回json结果，还可以定义返回的HttpHeaders和HttpStatus</em></p>
+<p>page的返回值问题：</p>
+<blockquote>
+<p>The <em>findAll(Pageable pageable)</em> method by default returns a <em>Page<t></t></em> object.</p>
+<p>However, <strong>we can choose to return either a Page<t>, a Slice<t> or a List<t> from any of our custom methods returning a paginated data</t></t></t></strong>.（注意是custom的才可以）</p>
+<p>A <em>Page<t></t></em> instance, in addition to having the list of <em>Product</em>s, also knows about the total number of available pages. <strong>It triggers an additional count query to achieve it. To avoid such an overhead cost, we can instead return a Slice<t> or a List<t>.</t></t></strong></p>
+</blockquote>
+<p><a href="https://blog.csdn.net/sswqzx/article/details/84195043" target="_blank" rel="noopener">https://blog.csdn.net/sswqzx/article/details/84195043</a>@requestparam详解</p>
+<p>分页目前参考了这个<a href="https://www.baeldung.com/spring-data-jpa-pagination-sorting" target="_blank" rel="noopener">https://www.baeldung.com/spring-data-jpa-pagination-sorting</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mooooon333.github.io/2019/12/09/openGL学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/_uploads/first.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bai's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/09/openGL学习/" itemprop="url">openGL学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-09T22:54:43+08:00">
+                2019-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>ambient其实直接把光源颜色乘以小常量</p>
+<p>其实这个diffuse就只考虑了光源和法向量的关系，没有其他，所以是漫反射</p>
+<p>镜面光照specular才考虑了视角和反射向量的夹角</p>
+<p>注意demo里光源的着色器是分开的</p>
+<p>这个基础光照这节信息量比较大</p>
+<p>加上材质只是在前边算基础光照每回乘的时候多乘一个材质对应信息的分量</p>
+<p>最后ambient的强度，diffuse和specular强度也封装进光的结构体了。基础光照好像没设置diffuse 的</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mooooon333.github.io/2019/12/06/python基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/_uploads/first.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bai's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/06/python基础/" itemprop="url">python基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-06T21:44:29+08:00">
+                2019-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>python不常用，来来回回忘记</p>
+<p>一旦洞察 tuple 的本质后，你就发现，tuple 原来大有文章：</p>
+<p>其一，事实上，返回多个值的函数实则是在返回一个 tuple, 只不过可以省略括号而已。</p>
+<p>然后最常用的其实就是list 和tuple，这两个用熟悉了就好</p>
+<p>list：append，insert，pop，可直接索引修改，数据类型可不同</p>
+<p>tuple：创建后不能修改，一个元素是（1，）</p>
+<p>循环：for x in … 直接带入那个。经常和range（xx)连用</p>
+<p>记得条件什么的加冒号</p>
+<p>int 向下取整，round四舍五入round(a)</p>
+<p>dict.keys输出所有键</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mooooon333.github.io/2019/12/03/openGL环境搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -251,7 +711,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/03/openGL环境搭建/" itemprop="url">openGL环境搭建</a></h1>
+                <a class="post-title-link" href="/2019/12/03/openGL环境搭建/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -302,7 +762,8 @@
 
       
         
-          <p>openGL跑了两个项目，涉及一些makefile和vs2017配置的问题</p>
+          <p>title: openGL环境搭建<br>date: 2019-12-03 13:57:48<br>tags: 图形学<br>typora-copy-images-to: openGL环境搭建<br>typora-root-url: openGL环境搭建</p>
+<p>openGL跑了两个项目，涉及一些makefile和vs2017配置的问题</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/12/03/openGL环境搭建/#more" rel="contents">
@@ -963,7 +1424,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -976,7 +1437,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
